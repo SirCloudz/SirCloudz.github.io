@@ -10,8 +10,6 @@ entry.target.classList.add("active");
 
 reveals.forEach(r=>observer.observe(r));
 
-/* NETWORK BACKGROUND */
-
 const canvas = document.getElementById("bg-network");
 const ctx = canvas.getContext("2d");
 
@@ -35,8 +33,6 @@ function animate(){
 
 ctx.clearRect(0,0,canvas.width,canvas.height);
 
-/* move nodes */
-
 nodes.forEach(n=>{
 n.x += n.vx;
 n.y += n.vy;
@@ -44,8 +40,6 @@ n.y += n.vy;
 if(n.x<0 || n.x>canvas.width) n.vx*=-1;
 if(n.y<0 || n.y>canvas.height) n.vy*=-1;
 });
-
-/* draw connections */
 
 for(let i=0;i<nodes.length;i++){
 for(let j=i+1;j<nodes.length;j++){
@@ -70,8 +64,6 @@ ctx.stroke();
 }
 
 }
-
-/* draw nodes */
 
 nodes.forEach(n=>{
 ctx.beginPath();
