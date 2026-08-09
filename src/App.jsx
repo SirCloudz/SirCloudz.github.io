@@ -220,8 +220,8 @@ export default function App() {
                   "Participé en el desarrollo de AI Insights 2026, iniciativa en colaboración entre UTEC y PwC.",
               },
               {
-                title: "Fundador — Larita BOT",
-                org: "Proyecto independiente",
+                title: "Co - Fundador — Larita BOT",
+                org: "Proyecto colaborativo",
                 date: "2026 — En desarrollo",
                 desc: "Bot de Discord todo-en-uno: anotaciones, música, resúmenes automáticos y utilidades de comunidad en una sola herramienta.",
               },
