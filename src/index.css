@@ -70,3 +70,88 @@ body {
 .reveal {
   animation: rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
+
+/* Fondo ambiental fijo: puntos tenues + grano + resplandores de esquina + spotlight
+   que sigue al cursor. Nada se mueve por sí solo. */
+.ambient-bg {
+  --mx: 50vw;
+  --my: -40vh;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* retícula de puntos, más suave al centro donde está el texto */
+.ambient-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(140, 153, 180, 0.13) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: radial-gradient(ellipse 75% 70% at 50% 50%, rgba(0, 0, 0, 0.45), black 100%);
+}
+
+/* grano para que el oscuro no se vea plano */
+.ambient-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.ambient-spotlight {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(520px circle at var(--mx) var(--my), rgba(56, 221, 209, 0.07), transparent 70%);
+}
+
+.ambient-orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(120px);
+}
+.ambient-orb--cyan {
+  width: 40rem; height: 40rem;
+  top: -12rem; left: -14rem;
+  background: var(--color-cyan);
+  opacity: 0.09;
+}
+.ambient-orb--amber {
+  width: 36rem; height: 36rem;
+  bottom: -14rem; right: -12rem;
+  background: var(--color-amber);
+  opacity: 0.06;
+}
+
+/* brillo suave detrás del título de cada sección, alternando cian y ámbar */
+.section-glow {
+  position: relative;
+}
+.section-glow::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 3rem;
+  left: -4rem;
+  width: 26rem;
+  height: 14rem;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, rgba(56, 221, 209, 0.09), transparent 70%);
+  filter: blur(20px);
+}
+.section-glow:nth-of-type(even)::before {
+  background: radial-gradient(ellipse at center, rgba(240, 184, 76, 0.06), transparent 70%);
+}
+
+@media (hover: none), (prefers-reduced-motion: reduce) {
+  .ambient-spotlight { display: none; }
+}
+
+@media (max-width: 640px) {
+  .ambient-orb--cyan { width: 22rem; height: 22rem; top: -8rem; left: -10rem; }
+  .ambient-orb--amber { width: 20rem; height: 20rem; bottom: -8rem; right: -8rem; }
+  .section-glow::before { width: 16rem; height: 10rem; left: -2rem; }
+}

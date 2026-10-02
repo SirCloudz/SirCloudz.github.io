@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import NetworkCanvas from "./components/NetworkCanvas";
 import { projects } from "./data/projects";
 
@@ -66,6 +66,26 @@ export default function App() {
   const typed = useTypewriter(ROLE_WORDS);
   const [activeSection, setActiveSection] = useState("perfil");
   const [menuOpen, setMenuOpen] = useState(false);
+  const ambientRef = useRef(null);
+
+  // spotlight que sigue al cursor (solo con mouse; en táctil queda oculto por CSS)
+  useEffect(() => {
+    const el = ambientRef.current;
+    let raf = 0;
+    function onMove(e) {
+      if (e.pointerType !== "mouse") return;
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        el.style.setProperty("--mx", `${e.clientX}px`);
+        el.style.setProperty("--my", `${e.clientY}px`);
+      });
+    }
+    window.addEventListener("pointermove", onMove);
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener("pointermove", onMove);
+    };
+  }, []);
 
   useEffect(() => {
     const sections = NAV.map((n) => document.getElementById(n.id)).filter(Boolean);
@@ -83,6 +103,13 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-ink text-text selection:bg-cyan-400 selection:text-ink">
+      {/* AMBIENT BACKGROUND */}
+      <div ref={ambientRef} className="ambient-bg" aria-hidden="true">
+        <div className="ambient-spotlight" />
+        <div className="ambient-orb ambient-orb--cyan" />
+        <div className="ambient-orb ambient-orb--amber" />
+      </div>
+
       {/* NAV */}
       <header className="fixed top-0 inset-x-0 z-50 border-b border-line/70 bg-ink/80 backdrop-blur-md">
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
@@ -130,7 +157,7 @@ export default function App() {
       </header>
 
       {/* HERO */}
-      <section id="top" className="relative pt-32 pb-24 md:pt-44 md:pb-32 overflow-hidden border-b border-line">
+      <section id="top" className="relative z-10 pt-32 pb-24 md:pt-44 md:pb-32 overflow-hidden border-b border-line">
         <div className="absolute inset-0 grid-fade" />
         <div className="absolute inset-0">
           <NetworkCanvas />
@@ -168,9 +195,9 @@ export default function App() {
         </div>
       </section>
 
-      <main>
+      <main className="relative z-10">
         {/* PROFILE */}
-        <section id="perfil" className="max-w-6xl mx-auto px-6 py-20 md:py-28 border-b border-line">
+        <section id="perfil" className="section-glow max-w-6xl mx-auto px-6 py-20 md:py-28 border-b border-line">
           <SectionEyebrow>01 · Perfil</SectionEyebrow>
           <div className="grid md:grid-cols-[1fr_1.4fr] gap-10 md:gap-16">
             <h2 className="font-display text-3xl md:text-4xl font-semibold leading-tight">
@@ -215,7 +242,7 @@ export default function App() {
         </section>
 
         {/* EXPERIENCE */}
-        <section id="experiencia" className="max-w-6xl mx-auto px-6 py-20 md:py-28 border-b border-line">
+        <section id="experiencia" className="section-glow max-w-6xl mx-auto px-6 py-20 md:py-28 border-b border-line">
           <SectionEyebrow>02 · Experiencia</SectionEyebrow>
           <h2 className="font-display text-3xl md:text-4xl font-semibold mb-14">Trayectoria</h2>
 
@@ -275,7 +302,7 @@ export default function App() {
         </section>
 
         {/* LEADERSHIP */}
-        <section id="liderazgo" className="max-w-6xl mx-auto px-6 py-20 md:py-28 border-b border-line">
+        <section id="liderazgo" className="section-glow max-w-6xl mx-auto px-6 py-20 md:py-28 border-b border-line">
           <SectionEyebrow>03 · Liderazgo</SectionEyebrow>
           <div className="rounded-2xl border border-line bg-surface/40 p-8 md:p-12 relative overflow-hidden">
             <div className="absolute -right-16 -top-16 h-56 w-56 rounded-full bg-cyan-400/10 blur-3xl" />
@@ -292,7 +319,7 @@ export default function App() {
         </section>
 
         {/* PROJECTS */}
-        <section id="proyectos" className="max-w-6xl mx-auto px-6 py-20 md:py-28 border-b border-line">
+        <section id="proyectos" className="section-glow max-w-6xl mx-auto px-6 py-20 md:py-28 border-b border-line">
           <SectionEyebrow>04 · Proyectos</SectionEyebrow>
           <div className="flex flex-wrap items-end justify-between gap-4 mb-14">
             <h2 className="font-display text-3xl md:text-4xl font-semibold">Cosas que construyo</h2>
@@ -332,7 +359,7 @@ export default function App() {
         </section>
 
         {/* SKILLS */}
-        <section id="habilidades" className="max-w-6xl mx-auto px-6 py-20 md:py-28 border-b border-line">
+        <section id="habilidades" className="section-glow max-w-6xl mx-auto px-6 py-20 md:py-28 border-b border-line">
           <SectionEyebrow>05 · Habilidades</SectionEyebrow>
           <div className="grid md:grid-cols-2 gap-10">
             <div>
@@ -376,7 +403,7 @@ export default function App() {
         </section>
 
         {/* CONTACT */}
-        <section id="contacto" className="max-w-6xl mx-auto px-6 py-20 md:py-32">
+        <section id="contacto" className="section-glow max-w-6xl mx-auto px-6 py-20 md:py-32">
           <SectionEyebrow>06 · Contacto</SectionEyebrow>
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
             <div>
@@ -400,7 +427,7 @@ export default function App() {
         </section>
       </main>
 
-      <footer className="border-t border-line">
+      <footer className="relative z-10 border-t border-line">
         <div className="max-w-6xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-3 font-mono text-xs text-muted">
           <p>© {new Date().getFullYear()} Diego Godoy</p>
           <p>Lima, Perú</p>
