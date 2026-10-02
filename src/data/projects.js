@@ -11,19 +11,28 @@ export const projects = [
   },
   {
     title: "Cyber Security Hub — Sitio Oficial",
-    period: "Web estática",
+    period: "Next.js · Tailwind CSS",
     summary:
       "Diseño y despliegue del sitio oficial de la comunidad de ciberseguridad de UTEC: información de eventos, recursos y contacto para la comunidad estudiantil.",
-    tags: ["HTML", "CSS", "JavaScript"],
+    tags: ["Next.js", "React", "Tailwind CSS", "Cloudflare"],
     link: "https://csh.org.pe",
     status: "live",
   },
   {
-    title: "CV Personal Interactivo",
-    period: "Web estática",
+    title: "CSH CON 2026",
+    period: "Next.js · Tailwind CSS",
     summary:
-      "Versión anterior de este mismo portafolio: currículum digital minimalista construido con HTML, CSS y JavaScript puro.",
-    tags: ["HTML", "CSS", "JavaScript"],
+      "Sitio de la conferencia universitaria de ciberseguridad organizada por CSH en UTEC: charlas técnicas, villages, networking, workshop internacional y CTF.",
+    tags: ["Next.js", "React", "Tailwind CSS", "Cloudflare"],
+    link: "https://conf.csh.org.pe",
+    status: "live",
+  },
+  {
+    title: "CV Personal Interactivo",
+    period: "React · Vite · Tailwind CSS",
+    summary:
+      "Este mismo portafolio: currículum digital interactivo construido con React, Vite y Tailwind CSS, desplegado en GitHub Pages.",
+    tags: ["React", "Vite", "Tailwind CSS", "GitHub Pages"],
     link: "https://github.com/SirCloudzUTEC",
     status: "archived",
   },
