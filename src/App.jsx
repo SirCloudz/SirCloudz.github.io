@@ -181,15 +181,27 @@ export default function App() {
             <div className="space-y-5 text-muted leading-relaxed text-base md:text-lg">
               <p>
                 Estudiante de <span className="text-text">Sistemas de Información</span> en{" "}
-                <span className="text-text">UTEC</span>, con experiencia liderando iniciativas
-                técnicas, emprendedoras y organizacionales. Me interesa cómo se protegen
-                los sistemas y, en paralelo, cómo se deciden las prioridades de un producto:
-                dos caras de la misma pregunta lo qué merece confianza y qué merece construirse.
+                <span className="text-text">UTEC</span>, con pasión por el product management,
+                el business analytics y la ciberseguridad. Me interesa construir soluciones
+                que conecten la tecnología con el impacto en el negocio.
               </p>
               <p>
-                Actualmente lidero la comunidad de ciberseguridad de mi universidad y
-                participo como asistente de cátedra y en proyectos que combinan investigación
-                aplicada con impacto directo en la comunidad estudiantil.
+                Liderar equipos es una parte central de mi experiencia. Como Coordinador General
+                de <span className="text-text">Cyber Security Hub (CSH)</span>, una organización
+                estudiantil con más de 400 miembros, coordino un equipo de 16 personas para impulsar
+                iniciativas y eventos que fortalecen la comunidad de ciberseguridad.
+              </p>
+              <p>
+                Además de CSH, participé en <span className="text-text">AI Insights</span>, un proyecto
+                colaborativo entre PwC Perú y UTEC, y contribuí al desarrollo de{" "}
+                <span className="text-text">OPECIA</span>, una competencia internacional en la que
+                estudiantes de secundaria con habilidades en ciberseguridad compitieron en Australia
+                representando al Perú. Estas experiencias me permitieron trabajar en entornos
+                multidisciplinarios junto a actores de la industria y la academia.
+              </p>
+              <p>
+                Alcancé un nivel avanzado de inglés en la PUCP, lo que me permite desenvolverme con
+                confianza en entornos internacionales.
               </p>
               <div className="flex flex-wrap gap-2 pt-2">
                 {["UTEC — Lima, Perú", "Sistemas de Información", "2025 — Presente"].map((t) => (
@@ -215,9 +227,9 @@ export default function App() {
                 title: "Asistente de Enseñanza y Laboratorio",
                 org: "UTEC",
                 date: "2026 — Presente",
-                desc: "Contribuí al desarrollo de OPECIA para el evento ICOA, dirigido a estudiantes de secundaria.",
+                desc: "Contribuí al desarrollo de OPECIA, una competencia en la que estudiantes de secundaria compitieron por un cupo en ICOA 2026, competencia internacional de ciberseguridad realizada en Australia.",
                 extra:
-                  "Participé en el desarrollo de AI Insights 2026, iniciativa en colaboración entre UTEC y PwC.",
+                  "Apoyé en la visualización de datos de AI Insights, proyecto colaborativo entre UTEC y PwC Perú.",
               },
               {
                 title: "Co - Fundador — Larita BOT",
@@ -267,14 +279,14 @@ export default function App() {
           <SectionEyebrow>03 · Liderazgo</SectionEyebrow>
           <div className="rounded-2xl border border-line bg-surface/40 p-8 md:p-12 relative overflow-hidden">
             <div className="absolute -right-16 -top-16 h-56 w-56 rounded-full bg-cyan-400/10 blur-3xl" />
-            <p className="font-mono text-xs uppercase tracking-wider text-amber-400 mb-4">Presidente</p>
+            <p className="font-mono text-xs uppercase tracking-wider text-amber-400 mb-4">Coordinador General</p>
             <h3 className="font-display text-2xl md:text-3xl font-semibold mb-4">
               Cyber Security Hub (CSH) — UTEC
             </h3>
             <p className="text-muted max-w-2xl leading-relaxed text-base md:text-lg">
-              Lidero la organización estudiantil de ciberseguridad de UTEC, organizando
-              eventos técnicos y desarrollando la comunidad universitaria de seguridad
-              informática desde 2025.
+              Coordino un equipo de 16 personas en la organización estudiantil de
+              ciberseguridad de UTEC, con más de 400 miembros, impulsando iniciativas y
+              eventos que fortalecen la comunidad de ciberseguridad desde 2025.
             </p>
           </div>
         </section>
